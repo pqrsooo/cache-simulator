@@ -9,10 +9,10 @@
 #define OFFSETLEN 2
 typedef unsigned char Byte;
 typedef unsigned char bool;
-typedef struct Cache{
-    bool valid;
-    bool dirty;
-    unsigned long tag;
+typedef struct Cache {
+	bool valid;
+	bool dirty;
+	unsigned long tag;
 	Byte data[BLOCK_SIZE];
 };
 
