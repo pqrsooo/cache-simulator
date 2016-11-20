@@ -20,8 +20,23 @@ Now, you can compile by running this command:
 make
 ```
 
-### How to use this Cache Simulator
-<i>Coming soon...</i>
+## How to use this Cache Simulator
+### Usage
+```bash
+./bin/Simulator [options] <path_to_address_file>
+```
+### Options
+| Option 	| Description 	|
+|-----------------------------	|-------------------------------------------------------------------------------------------------------	|
+| ``-s, --size <cache_size>`` 	| Set cache size (byte) 	|
+| ``-skb, --size-kb <cache_size>``	| Set cache size (kilobyte) 	|
+| ``-dm, --direct-mapped <block_size>?`` 	| Set cache structure to a direct mapped with specific block size (4 by default) 	|
+| ``-as, --associativity <n_way>?`` 	| Set cache structure to an associativity with specific n (2 by default) 	|
+| ``-lru, --least-recently-used`` 	| Set least recently used as a replacement algorithm when ``--associativity`` option is triggered (default) 	|
+| ``-rr, --round-robin`` 	| Set round robin as a replacement algorithm when ``--associativity`` option is triggered 	|
+| ``-h, --help`` 	| Show help message 	|
+
+<b>Note that</b> ``?`` after ``<argument>`` indicates that ``<argument>`` is optional and you can also view this help message by including ``--help`` or ``-h`` option after command.
 
 ## License
 
