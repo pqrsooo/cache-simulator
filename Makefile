@@ -1,15 +1,24 @@
-all: simulator
+CC = g++
+SRC_DIR = src
+BUILD_DIR = build
+TARGET = bin/Simulator
 
-simulator:
-	gcc -o Simulator Simulator.c
+SRC_EXT = cpp
+SOURCES = $(shell find $(SRC_DIR) -type f -name *.$(SRC_EXT))
+OBJECTS = $(patsubst $(SRC_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.$(SRC_EXT)=.o))
+CFLAGS = -std=c++11
+INC = -I include
 
-simulator-cpp:
-	g++ -std=c++11 -o Simulator-cpp Simulator.cpp
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(CC) $^ -o $(TARGET)"; $(CC) $^ -o $(TARGET)
 
-clean: clean-simulator clean-simulator-cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT)
+	@mkdir -p $(BUILD_DIR)
+	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
-clean-simulator:
-	rm Simulator
+clean:
+	@echo " Cleaning...";
+	@echo " $(RM) -r $(BUILD_DIR) $(TARGET)"; $(RM) -r $(BUILD_DIR) $(TARGET)
 
-clean-simulator-cpp:
-	rm Simulator-cpp
+.PHONY: clean

@@ -1,11 +1,10 @@
 # Created by https://www.gitignore.io/api/c,macos
 
-# Ignore all
-*
+# Ignore any executables
+bin/*
 
-# Unignore all with extensions and Makefile
-!*.*
-!Makefile
+# Ignore build directory
+build
 
 ### C ###
 # Prerequisites
