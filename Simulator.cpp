@@ -2,15 +2,19 @@
 #include <cstring>
 #include <cstdlib>
 
+// Enum declaration
 enum CacheType {
     DIRECT_MAPPED,
     ASSOCIATIVITY
 };
-
 enum ReplacementAlgorithm {
     LEAST_RECENTLY_USED,
     ROUND_ROBIN
 };
+
+// Function prototype
+void tokenizeArgv(int, char **);
+void showUsage(char *);
 
 // Cache structure parameters (by default)
 int cacheSize = 4;
@@ -22,14 +26,13 @@ char *fileName;
 
 bool isSetFileName = false;
 
-void tokenizeArgv(int argc, char *argv[]);
-
 int main(int argc, char *argv[]){
     tokenizeArgv(argc, argv);
     
     if(!isSetFileName) {
-        // TODO: Show usage
-        fprintf(stderr, "Please specify address file\n");
+        fprintf(stderr, "Please specify address file\n\n");
+        // Show usage
+        showUsage(argv[0]);
         exit(-1);
     }
     
@@ -54,6 +57,19 @@ int main(int argc, char *argv[]){
 
 }
 
+void showUsage(char *programName) {
+    printf("Usage: %s [options] <path_to_address_file>\n\n"
+            "Options: \n"
+            "  -s, --size <cache_size>\t\tSet cache size (byte)\n"
+            "  -skb, --size-kb <cache_size>\t\tSet cache size (kilobyte)\n"
+            "  -dm, --direct-mapped <block_size>?\tSet cache structure to a direct mapped with specific block size (4 by default)\n"
+            "  -as, --associativity <n_way>?\t\tSet cache structure to an associativity with specific n (2 by default)\n"
+            "  -lru, --least-recently-used\t\tSet least recently used as a replacement algorithm when --associativity option is triggered (default)\n"
+            "  -rr, --round-robin\t\t\tSet round robin as a replacement algorithm when --associativity option is triggered\n"
+            "  -h, --help\t\t\t\tShow this help message\n"
+            "Note that '?' after <argument> indicates that <argument> is optional\n", programName);
+}
+
 void tokenizeArgv(int argc, char *argv[]) {
     // Tokenize argv
     int argcCount = 1;
@@ -68,7 +84,7 @@ void tokenizeArgv(int argc, char *argv[]) {
                 exit(-1);
             }
             argcCount += 2;
-        } else if(strcmp(argv[argcCount], "--sizekb") == 0 || strcmp(argv[argcCount], "-skb") == 0) {
+        } else if(strcmp(argv[argcCount], "--size-kb") == 0 || strcmp(argv[argcCount], "-skb") == 0) {
             // Cache size (KB)
             if(argcCount + 1 < argc) {
                 cacheSize = atoi(argv[argcCount + 1]) * 1000;
@@ -109,7 +125,8 @@ void tokenizeArgv(int argc, char *argv[]) {
             replacementAlgorithm = ReplacementAlgorithm::LEAST_RECENTLY_USED;
             argcCount += 1;
         } else if(strcmp(argv[argcCount], "--help") == 0 || strcmp(argv[argcCount], "-h") == 0) {
-            // TODO: Show usage
+            // Show usage
+            showUsage(argv[0]);
             exit(0);
             argcCount += 1;
         } else {
