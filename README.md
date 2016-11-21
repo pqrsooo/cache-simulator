@@ -28,8 +28,8 @@ make
 ### Options
 | Option 	| Description 	|
 |-----------------------------	|-------------------------------------------------------------------------------------------------------	|
-| ``-s, --size <cache_size>`` 	| Set cache size (byte) 	|
-| ``-skb, --size-kb <cache_size>``	| Set cache size (kilobyte) 	|
+| ``-s, --size <cache_size>`` 	| Set cache size (kilobyte) 	|
+| ``-sb, --size-b <cache_size>``	| Set cache size (byte) 	|
 | ``-dm, --direct-mapped <block_size>?`` 	| Set cache structure to a direct mapped with specific block size (4 by default) 	|
 | ``-as, --associativity <n_way>?`` 	| Set cache structure to an associativity with specific n (2 by default) 	|
 | ``-lru, --least-recently-used`` 	| Set least recently used as a replacement algorithm when ``--associativity`` option is triggered (default) 	|
