@@ -5,7 +5,14 @@
 #include "Utility.h"
 
 Utility::Utility() {
+	// Cache structure parameters (by default)
+	this->cacheSize = 4;
+	this->cacheType = CacheType::DIRECT_MAPPED;
+	this->blockSize = 4;
+	this->nWay = 2;
+	this->replacementAlgorithm = ReplacementAlgorithm::LEAST_RECENTLY_USED;
 
+	this->isSetFileName = false;
 }
 
 void Utility::showUsage(char *programName) {
@@ -28,7 +35,7 @@ void Utility::tokenizeArgv(int argc, char *argv[]) {
 		if(strcmp(argv[argcCount], "--size") == 0 || strcmp(argv[argcCount], "-s") == 0) {
 			// Cache size (kilobyte)
 			if(argcCount + 1 < argc) {
-				cacheSize = atoi(argv[argcCount + 1]) * (1 << 10);
+				this->cacheSize = atoi(argv[argcCount + 1]) * (1 << 10);
 			} else {
 				// Error
 				fprintf(stderr, "%s option requires one argument\n", argv[argcCount]);
@@ -38,7 +45,7 @@ void Utility::tokenizeArgv(int argc, char *argv[]) {
 		} else if(strcmp(argv[argcCount], "--size-b") == 0 || strcmp(argv[argcCount], "-sb") == 0) {
 			// Cache size (byte)
 			if(argcCount + 1 < argc) {
-				cacheSize = atoi(argv[argcCount + 1]);
+				this->cacheSize = atoi(argv[argcCount + 1]);
 			} else {
 				// Error
 				fprintf(stderr, "%s option requires one argument\n", argv[argcCount]);
@@ -47,10 +54,10 @@ void Utility::tokenizeArgv(int argc, char *argv[]) {
 			argcCount += 2;
 		} else if(strcmp(argv[argcCount], "--direct-mapped") == 0 || strcmp(argv[argcCount], "-dm") == 0) {
 			// Direct mapped
-			cacheType = CacheType::DIRECT_MAPPED;
+			this->cacheType = CacheType::DIRECT_MAPPED;
 			if(argcCount + 1 < argc) {
 				// Block size (Byte)
-				blockSize = atoi(argv[argcCount + 1]);
+				this->blockSize = atoi(argv[argcCount + 1]);
 				argcCount += 2;
 			} else {
 				// Optional
@@ -58,10 +65,10 @@ void Utility::tokenizeArgv(int argc, char *argv[]) {
 			}
 		} else if(strcmp(argv[argcCount], "--associativity") == 0 || strcmp(argv[argcCount], "-as") == 0) {
 			// Associativity
-			cacheType = CacheType::ASSOCIATIVITY;
+			this->cacheType = CacheType::ASSOCIATIVITY;
 			if(argcCount + 1 < argc) {
 				// n-way
-				nWay = atoi(argv[argcCount + 1]);
+				this->nWay = atoi(argv[argcCount + 1]);
 				argcCount += 2;
 			} else {
 				// Optional
@@ -69,21 +76,21 @@ void Utility::tokenizeArgv(int argc, char *argv[]) {
 			}
 		} else if(strcmp(argv[argcCount], "--round-robin") == 0 || strcmp(argv[argcCount], "-rr") == 0) {
 			// Set round robin as a replacement algorithm when --associativity is triggered
-			replacementAlgorithm = ReplacementAlgorithm::ROUND_ROBIN;
+			this->replacementAlgorithm = ReplacementAlgorithm::ROUND_ROBIN;
 			argcCount += 1;
 		} else if(strcmp(argv[argcCount], "--least-recently-used") == 0 || strcmp(argv[argcCount], "-lru") == 0) {
 			// Set least recently used as a replacement algorithm when --associativity is triggered
-			replacementAlgorithm = ReplacementAlgorithm::LEAST_RECENTLY_USED;
+			this->replacementAlgorithm = ReplacementAlgorithm::LEAST_RECENTLY_USED;
 			argcCount += 1;
 		} else if(strcmp(argv[argcCount], "--help") == 0 || strcmp(argv[argcCount], "-h") == 0) {
 			// Show usage
-			showUsage(argv[0]);
+			this->showUsage(argv[0]);
 			exit(0);
 			argcCount += 1;
 		} else {
 			// File name
-			fileName = argv[argcCount];
-			isSetFileName = true;
+			this->fileName = argv[argcCount];
+			this->isSetFileName = true;
 			argcCount += 1;
 		}
 	}

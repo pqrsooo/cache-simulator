@@ -7,15 +7,14 @@ class Utility {
 private:
 
 public:
-	// Cache structure parameters (by default)
-	int cacheSize = 4;
-	CacheType cacheType = CacheType::DIRECT_MAPPED;
-	int blockSize = 4;
-	int nWay = 2;
-	ReplacementAlgorithm replacementAlgorithm = ReplacementAlgorithm::LEAST_RECENTLY_USED;
+	int cacheSize;
+	CacheType cacheType;
+	int blockSize;
+	int nWay;
+	ReplacementAlgorithm replacementAlgorithm;
 	char *fileName;
 
-	bool isSetFileName = false;
+	bool isSetFileName;
 
 	Utility();
 	void showUsage(char *programName);
