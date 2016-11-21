@@ -26,11 +26,13 @@ private:
 	};
 	vector<CacheEntry> cache;
 	unsigned long entrySize;
+	unsigned int tagLength, indexLength, blockOffsetLength, byteOffsetLength;
 
 public:
 	DirectMapped(unsigned long cacheSize, unsigned long blockSize);
 	void access(unsigned long addr);
 	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset);
+	void printStatus();
 };
 
 #endif

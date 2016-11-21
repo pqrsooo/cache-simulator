@@ -14,6 +14,7 @@ enum ReplacementAlgorithm {
 class Cache {
 protected:
 	long hit, miss;
+	unsigned int wordSize;
 
 public:
 	Cache();
