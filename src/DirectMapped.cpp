@@ -1,7 +1,9 @@
+#include <cmath>
 #include "DirectMapped.h"
 
-DirectMapped::DirectMapped() {
-
+DirectMapped::DirectMapped(unsigned long cacheSize, unsigned long blockSize) {
+	this->entrySize = cacheSize / blockSize;
+	this->cache = vector<CacheEntry>(this->entrySize, CacheEntry((int)blockSize));
 }
 
 void DirectMapped::access(unsigned long addr) {

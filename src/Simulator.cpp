@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	// Read file
 	while (fgets(&buff[0], 1024, fp)) {
 		sscanf(buff, "0x%lx", &addrTemp);
-		
+
 		// access(addrTemp);
 	}
 
