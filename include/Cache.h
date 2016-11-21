@@ -12,13 +12,15 @@ enum ReplacementAlgorithm {
 };
 
 class Cache {
-private:
-	int hit, miss;
+protected:
+	long hit, miss;
 
 public:
 	Cache();
-	void access(unsigned long addr);
-	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset);
+	virtual void access(unsigned long addr) = 0;
+
+	long getHit() const;
+	long getMiss() const;
 };
 
 #endif

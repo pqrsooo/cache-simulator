@@ -1,14 +1,14 @@
 #include "Cache.h"
 
 Cache::Cache() {
-	hit = 0;
-	miss = 0;
+	this->hit = 0;
+	this->miss = 0;
 }
 
-void Cache::access(unsigned long addr) {
-
+long Cache::getHit() const {
+	return this->hit;
 }
 
-void Cache::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset) {
-
+long Cache::getMiss() const {
+	return this->miss;
 }
