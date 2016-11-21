@@ -20,6 +20,8 @@ public:
 	Cache();
 	virtual void access(unsigned long addr) = 0;
 
+	// TODO: Remove printStatus (for test only)
+	virtual void printStatus() = 0;
 	long getHit() const;
 	long getMiss() const;
 };

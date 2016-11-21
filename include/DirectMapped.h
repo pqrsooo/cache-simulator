@@ -31,7 +31,7 @@ private:
 public:
 	DirectMapped(unsigned long cacheSize, unsigned long blockSize);
 	void access(unsigned long addr);
-	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset);
+	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *index, unsigned long *blockOffset, unsigned long *byteOffset);
 	void printStatus();
 };
 

@@ -6,7 +6,7 @@
 
 Utility::Utility() {
 	// Cache structure parameters (by default)
-	this->cacheSize = 4;
+	this->cacheSize = 4 * (1 << 10);
 	this->cacheType = CacheType::DIRECT_MAPPED;
 	this->blockSize = 4;
 	this->nWay = 2;
