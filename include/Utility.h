@@ -7,10 +7,10 @@ class Utility {
 private:
 
 public:
-	int cacheSize;
+	unsigned long cacheSize;
 	CacheType cacheType;
-	int blockSize;
-	int nWay;
+	unsigned long blockSize;
+	unsigned int nWay;
 	ReplacementAlgorithm replacementAlgorithm;
 	char *fileName;
 
