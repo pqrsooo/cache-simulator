@@ -49,8 +49,8 @@ void Associativity::access(unsigned long addr) {
             if(!isHit && isInvalid) {
                 ++miss;
             } else if(!isHit) {
-                unsigned long replaceIndex = roundIndex[index++];
-                caches[replaceIndex][index].tag = tag;
+                unsigned long replaceWay = roundIndex[index++];
+                caches[replaceWay][index].tag = tag;
                 ++miss;
             } else {
                 ++hit;
