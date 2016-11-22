@@ -54,8 +54,8 @@ int main(int argc, char *argv[]) {
 
 	// TODO: Print current cache structure
 
-	printf("\nHit: ld\n"
-		   "Miss: ld\n"
+	printf("\nHit: %ld\n"
+		   "Miss: %ld\n"
 		   "Miss Rate: %.4f\n", cache->getHit(), cache->getMiss(), (float)cache->getMiss() / (float)cache->getNAccess());
 
 }

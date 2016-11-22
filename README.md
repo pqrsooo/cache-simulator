@@ -175,6 +175,187 @@ make
   </tr>
 </table>
 
+### Associativity
+#### Hit
+<table style="text-align: center;">
+  <tr>
+    <th colspan="5">Associativity (Hit)</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Cache Size <br>(KB)</td>
+    <td colspan="2">Two-way</td>
+    <td colspan="2">Four-Way</td>
+  </tr>
+  <tr>
+    <td>LRU</td>
+    <td>RR</td>
+    <td>LRU</td>
+    <td>RR</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>1491704</td>
+    <td>1458831</td>
+    <td>1527679</td>
+    <td>1475129</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>1759588</td>
+    <td>1740139</td>
+    <td>1786471</td>
+    <td>1759111</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>1834446</td>
+    <td>1821673</td>
+    <td>1852267</td>
+    <td>1834498</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>1939563</td>
+    <td>1934739</td>
+    <td>1950492</td>
+    <td>1943335</td>
+  </tr>
+  <tr>
+    <td>512</td>
+    <td>1974599</td>
+    <td>1974538</td>
+    <td>1974745</td>
+    <td>1974736</td>
+  </tr>
+  <tr>
+    <td>1024</td>
+    <td>1974717</td>
+    <td>1974691</td>
+    <td>1974753</td>
+    <td>1974753</td>
+  </tr>
+</table>
+
+#### Miss
+<table style="text-align: center;">
+  <tr>
+    <th colspan="5">Associativity (Miss)</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Cache Size <br>(KB)</td>
+    <td colspan="2">Two-way</td>
+    <td colspan="2">Four-Way</td>
+  </tr>
+  <tr>
+    <td>LRU</td>
+    <td>RR</td>
+    <td>LRU</td>
+    <td>RR</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>508296</td>
+    <td>541169</td>
+    <td>472321</td>
+    <td>524871</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>240412</td>
+    <td>259861</td>
+    <td>213529</td>
+    <td>240889</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>165554</td>
+    <td>178327</td>
+    <td>147733</td>
+    <td>165502</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>60437</td>
+    <td>65261</td>
+    <td>49508</td>
+    <td>56665</td>
+  </tr>
+  <tr>
+    <td>512</td>
+    <td>25401</td>
+    <td>25462</td>
+    <td>25255</td>
+    <td>25264</td>
+  </tr>
+  <tr>
+    <td>1024</td>
+    <td>25283</td>
+    <td>25309</td>
+    <td>25247</td>
+    <td>25247</td>
+  </tr>
+</table>
+
+#### Miss rate
+<table style="text-align: center;">
+  <tr>
+    <th colspan="5">Associativity (Miss rate)</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Cache Size <br>(KB)</td>
+    <td colspan="2">Two-way</td>
+    <td colspan="2">Four-Way</td>
+  </tr>
+  <tr>
+    <td>LRU</td>
+    <td>RR</td>
+    <td>LRU</td>
+    <td>RR</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0.2541</td>
+    <td>0.2706</td>
+    <td>0.2362</td>
+    <td>0.2624</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>0.1202</td>
+    <td>0.1299</td>
+    <td>0.1068</td>
+    <td>0.1204</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>0.0828</td>
+    <td>0.0892</td>
+    <td>0.0739</td>
+    <td>0.0828</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>0.0302</td>
+    <td>0.0326</td>
+    <td>0.0248</td>
+    <td>0.0283</td>
+  </tr>
+  <tr>
+    <td>512</td>
+    <td>0.0127</td>
+    <td>0.0127</td>
+    <td>0.0126</td>
+    <td>0.0126</td>
+  </tr>
+  <tr>
+    <td>1024</td>
+    <td>0.0126</td>
+    <td>0.0127</td>
+    <td>0.0126</td>
+    <td>0.0126</td>
+  </tr>
+</table>
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
