@@ -40,6 +40,10 @@ make
 
 ## Report
 ### Direct Mapped
+Command:
+```bash
+./bin/Simulator input/gcc_ld_trace.txt --direct-mapped <block_size> --size <cache_size>
+```
 #### Hit
 <table style="text-align: center;">
   <tr>
@@ -176,6 +180,10 @@ make
 </table>
 
 ### Associativity
+Command:
+```bash
+./bin/Simulator input/gcc_ld_trace.txt --associativity <n_way> --size <cache_size> [--round-robin | --least-recently-used]
+```
 #### Hit
 <table style="text-align: center;">
   <tr>
