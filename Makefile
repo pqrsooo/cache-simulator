@@ -1,6 +1,7 @@
 CC = g++
 SRC_DIR = src
 BUILD_DIR = build
+TARGET_DIR = bin
 TARGET = bin/Simulator
 
 SRC_EXT = cpp
@@ -11,6 +12,7 @@ INC = -I include
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
+	@mkdir -p $(TARGET_DIR)
 	@echo " $(CC) $^ -o $(TARGET)"; $(CC) $^ -o $(TARGET)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT)
