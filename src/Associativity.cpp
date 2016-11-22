@@ -64,7 +64,7 @@ void Associativity::access(unsigned long addr) {
     } else if (this->replacementAlgo == ReplacementAlgorithm::LEAST_RECENTLY_USED) {
        bool isHit = false;
        bool isInvalid = false;
-       unsigned long minWays = 0;
+       unsigned long minWay = 0;
 	   ++age;
        for(int way = 0 ; way < nways ; way++) {
            if(!caches[way][index].valid) {
@@ -83,10 +83,10 @@ void Associativity::access(unsigned long addr) {
            ++miss;
        } else if(!isHit) {
 		   for(int way = 0 ; way < nways ; way++) {
-	           if(caches[minWays][index]._age <  caches[way][index]._age) minWays = way;
+	           if(caches[way][index]._age <  caches[minWay][index]._age) minWay = way;
 		   }
-           caches[minWays][index]._age = age;
-           caches[minWays][index].tag = tag;
+           caches[minWay][index]._age = age;
+           caches[minWay][index].tag = tag;
            ++miss;
        } else {
            ++hit;
