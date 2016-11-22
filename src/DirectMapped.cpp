@@ -58,3 +58,23 @@ void DirectMapped::printStatus() {
 		   "Byte Offset Length: %u\n",
 		   entrySize, tagLength, indexLength, blockOffsetLength, byteOffsetLength);
 }
+
+unsigned long DirectMapped::getEntrySize() const {
+	return this->entrySize;
+}
+
+unsigned int DirectMapped::getTagLength() const {
+	return this->tagLength;
+}
+
+unsigned int DirectMapped::getIndexLength() const {
+	return this->indexLength;
+}
+
+unsigned int DirectMapped::getBlockOffsetLength() const {
+	return this->blockOffsetLength;
+}
+
+unsigned int DirectMapped::getByteOffsetLength() const {
+	return this->byteOffsetLength;
+}

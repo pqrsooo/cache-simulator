@@ -23,4 +23,8 @@ clean:
 	@echo " Cleaning...";
 	@echo " $(RM) -r $(BUILD_DIR) $(TARGET)"; $(RM) -r $(BUILD_DIR) $(TARGET)
 
-.PHONY: clean
+test:
+	@echo " Testing...";
+	cd lib/gtest && $(MAKE)
+
+.PHONY: clean test

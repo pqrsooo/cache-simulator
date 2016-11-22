@@ -33,6 +33,12 @@ public:
 	void access(unsigned long addr);
 	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *index, unsigned long *blockOffset, unsigned long *byteOffset);
 	void printStatus();
+
+	unsigned long getEntrySize() const;
+	unsigned int getTagLength() const;
+	unsigned int getIndexLength() const;
+	unsigned int getBlockOffsetLength() const;
+	unsigned int getByteOffsetLength() const;
 };
 
 #endif
