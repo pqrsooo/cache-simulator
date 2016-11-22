@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 
 	FILE *fp;
 	char buff[1025];
-	unsigned long addrTemp;
+	unsigned long addrTmp;
 
 	if(!(fp = fopen(utility.fileName, "r"))) {
 		perror(utility.fileName);
@@ -28,16 +28,24 @@ int main(int argc, char *argv[]) {
 	}
 
 	// TODO: Initialize cache
+	Cache *cache;
+	if(utility.cacheType == CacheType::DIRECT_MAPPED) {
+		cache = new DirectMapped(utility.cacheSize, utility.blockSize);
+	} else {
+		// Associativity
+	}
+
+	cache->printStatus();
 
 	// Read file
 	while (fgets(&buff[0], 1024, fp)) {
-		sscanf(buff, "0x%lx", &addrTemp);
-		
-		// access(addrTemp);
+		sscanf(buff, "0x%lx", &addrTmp);
+		cache->access(addrTmp);
 	}
 
 	// TODO: Print current cache structure
 
+	printf("Hit: %7ld, Miss: %7ld\n", cache->getHit(), cache->getMiss());
 	// printf("Hit: %7d Miss: %7d\n", HIT, MISS);
 
 }
