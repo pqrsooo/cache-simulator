@@ -2,13 +2,40 @@
 #define ASSOCIATIVITY_H
 
 #include "Cache.h"
-
+#include <vector>
+using namespace std;
 class Associativity : public Cache {
-private:
+protected:
+	class CacheEntries {
+		friend class Associativity;
+		protected:
+			typedef unsigned char Byte;
+			bool valid;
+			bool dirty;
+			unsigned long tag;
+			unsigned long _age;
+			Byte data;
+			
+		public:
+			CacheEntries() {
+				this->valid = false;
+				this->dirty = false;
+				this->_age = 0;
+			}
+	};
 
+protected:
+		unsigned int nways;
+		unsigned long age;
+		unsigned long byteOffsetBit;
+		unsigned long addressBit;
+		unsigned long tagBit;
+		unsigned long *roundIndex;
+		ReplacementAlgorithm replacementAlgo;
+		vector<vector<CacheEntries>> caches;
 
 public:
-	Associativity();
+	Associativity(unsigned int nways, ReplacementAlgorithm replacementAlgo, unsigned long cacheSize);
 	void access(unsigned long addr);
 	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset);
 };
