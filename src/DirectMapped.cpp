@@ -1,4 +1,5 @@
 #include <cmath>
+#include <cstdio>
 #include "DirectMapped.h"
 
 DirectMapped::DirectMapped(unsigned long cacheSize, unsigned long blockSize) {
