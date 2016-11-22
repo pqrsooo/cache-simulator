@@ -38,15 +38,24 @@ int main(int argc, char *argv[]) {
 	cache->printStatus();
 
 	// Read file
+	bool isSkipFileName = false;
+	int maxNPrint = 5;
 	while (fgets(&buff[0], 1024, fp)) {
 		sscanf(buff, "0x%lx", &addrTmp);
+		if(!isSkipFileName) {
+			isSkipFileName = true;
+			continue;
+		}
+		if(maxNPrint-- > 0) {
+			printf("%lx\n", addrTmp);
+		}
 		cache->access(addrTmp);
 	}
 
 	// TODO: Print current cache structure
 
-	printf("\nHit: %7ld\n"
-		   "Miss: %7ld\n"
-		   "Miss Rate: %.3f\n", cache->getHit(), cache->getMiss(), (float)cache->getMiss() / (float)cache->getNAccess());
+	printf("\nHit: ld\n"
+		   "Miss: ld\n"
+		   "Miss Rate: %.4f\n", cache->getHit(), cache->getMiss(), (float)cache->getMiss() / (float)cache->getNAccess());
 
 }

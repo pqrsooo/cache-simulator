@@ -39,7 +39,8 @@ make
 <b>Note that</b> ``?`` after ``<argument>`` indicates that ``<argument>`` is optional and you can also view this help message by including ``--help`` or ``-h`` option after command.
 
 ## Report
-### Direct Mapped: Hit
+### Direct Mapped
+#### Hit
 <table style="text-align: center;">
   <tr>
     <th colspan="5">Direct mapped (Hit)</th>
@@ -84,7 +85,7 @@ make
   </tr>
 </table>
 
-### Direct Mapped: Miss
+#### Miss
 <table style="text-align: center;">
   <tr>
     <th colspan="5">Direct mapped (Miss)</th>
@@ -129,7 +130,7 @@ make
   </tr>
 </table>
 
-### Direct Mapped: Miss rate
+#### Miss rate
 <table style="text-align: center;">
   <tr>
     <th colspan="5">Direct mapped (Miss rate)</th>

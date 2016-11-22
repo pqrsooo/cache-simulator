@@ -9,7 +9,8 @@ using namespace std;
 #define DATA_SIZE 32
 
 Associativity::Associativity(unsigned int nways, ReplacementAlgorithm replacementAlgo, unsigned long cacheSize ) {
-    unsigned long entries = cacheSize/nways;
+    unsigned long entries = cacheSize / (nways * this->wordSize);
+
     this->nways = nways;
     this->age = STARTING_AGE;
     this->byteOffsetLength = BYTE_OFFSET;
@@ -17,6 +18,8 @@ Associativity::Associativity(unsigned int nways, ReplacementAlgorithm replacemen
     this->tagLength = DATA_SIZE - BYTE_OFFSET - log2(entries);
     this->replacementAlgo = replacementAlgo;
     caches = vector<vector<CacheEntries>>(nways,vector<CacheEntries>(entries));
+	printf("%d\n", caches.size());
+	printf("%d\n", caches[0].size());
 
     switch (replacementAlgo)
     {
@@ -46,24 +49,24 @@ void Associativity::access(unsigned long addr) {
                 isHit = true;
                 break;
             }
-
-            if(!isHit && isInvalid) {
-                ++miss;
-            } else if(!isHit) {
-                unsigned long replaceWay = roundIndex[index++];
-                caches[replaceWay][index].tag = tag;
-                ++miss;
-            } else {
-                ++hit;
-            }
         }
+		if(!isHit && isInvalid) {
+			++miss;
+		} else if(!isHit) {
+			unsigned long replaceWay = roundIndex[index];
+			caches[replaceWay][index].tag = tag;
+			roundIndex[index] = (roundIndex[index]+1)%nways;
+			++miss;
+		} else {
+			++hit;
+		}
 
     } else if (this->replacementAlgo == ReplacementAlgorithm::LEAST_RECENTLY_USED) {
        bool isHit = false;
        bool isInvalid = false;
        unsigned long minWays = 0;
+	   ++age;
        for(int way = 0 ; way < nways ; way++) {
-           if(caches[minWays][index]._age <  caches[way][index]._age) minWays = way;
            if(!caches[way][index].valid) {
                caches[way][index].tag = tag;
                caches[way][index].valid = true;
@@ -79,13 +82,15 @@ void Associativity::access(unsigned long addr) {
        if(!isHit && isInvalid) {
            ++miss;
        } else if(!isHit) {
+		   for(int way = 0 ; way < nways ; way++) {
+	           if(caches[minWays][index]._age <  caches[way][index]._age) minWays = way;
+		   }
            caches[minWays][index]._age = age;
            caches[minWays][index].tag = tag;
            ++miss;
        } else {
            ++hit;
        }
-       ++age;
     } else {
         printf("Unknown Replacement Algorithm\n");
     }
