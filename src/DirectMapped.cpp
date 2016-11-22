@@ -26,6 +26,7 @@ void DirectMapped::access(unsigned long addr) {
 		this->cache[index].valid = true;
 		this->cache[index].tag = tag;
 	}
+	++this->nAccess;
 }
 
 void DirectMapped::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *index, unsigned long *blockOffset, unsigned long *byteOffset) {

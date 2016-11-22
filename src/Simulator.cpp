@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	if(utility.cacheType == CacheType::DIRECT_MAPPED) {
 		cache = new DirectMapped(utility.cacheSize, utility.blockSize);
 	} else {
-		// Associativity
+		cache = new Associativity(utility.nWay, utility.replacementAlgorithm, utility.cacheSize);
 	}
 
 	cache->printStatus();
@@ -45,7 +45,8 @@ int main(int argc, char *argv[]) {
 
 	// TODO: Print current cache structure
 
-	printf("Hit: %7ld, Miss: %7ld\n", cache->getHit(), cache->getMiss());
-	// printf("Hit: %7d Miss: %7d\n", HIT, MISS);
+	printf("\nHit: %7ld\n"
+		   "Miss: %7ld\n"
+		   "Miss Rate: %.3f\n", cache->getHit(), cache->getMiss(), (float)cache->getMiss() / (float)cache->getNAccess());
 
 }

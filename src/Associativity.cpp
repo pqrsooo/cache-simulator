@@ -45,7 +45,7 @@ void Associativity::access(unsigned long addr) {
             } else if(caches[way][index].tag == tag && caches[way][index].valid) {
                 isHit = true;
                 break;
-            } 
+            }
 
             if(!isHit && isInvalid) {
                 ++miss;
@@ -57,7 +57,7 @@ void Associativity::access(unsigned long addr) {
                 ++hit;
             }
         }
-        
+
     } else if (this->replacementAlgo == ReplacementAlgorithm::LEAST_RECENTLY_USED) {
        bool isHit = false;
        bool isInvalid = false;
@@ -89,6 +89,7 @@ void Associativity::access(unsigned long addr) {
     } else {
         printf("Unknown Replacement Algorithm\n");
     }
+	++this->nAccess;
 }
 
 void Associativity::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *index, unsigned long *byteOffset) {
@@ -107,4 +108,13 @@ void Associativity::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigne
     }
     *byteOffset = addr & tmp;
 
+}
+
+void Associativity::printStatus() {
+	// printf("Entry Size: %lu\n"
+	// 	   "Tag Length: %u\n"
+	// 	   "Index Length: %u\n"
+	// 	   "Block Offset Length: %u\n"
+	// 	   "Byte Offset Length: %u\n",
+	// 	   entrySize, tagLength, indexLength, blockOffsetLength, byteOffsetLength);
 }

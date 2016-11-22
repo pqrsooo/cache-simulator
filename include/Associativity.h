@@ -15,7 +15,7 @@ protected:
 			unsigned long tag;
 			unsigned long _age;
 			Byte data;
-			
+
 		public:
 			CacheEntries() {
 				this->valid = false;
@@ -38,6 +38,7 @@ public:
 	Associativity(unsigned int nways, ReplacementAlgorithm replacementAlgo, unsigned long cacheSize);
 	void access(unsigned long addr);
 	void tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned long *idx, unsigned long *offset);
+	void printStatus();
 };
 
 #endif

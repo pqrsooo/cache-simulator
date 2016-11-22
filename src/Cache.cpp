@@ -3,6 +3,7 @@
 Cache::Cache() {
 	this->hit = 0;
 	this->miss = 0;
+	this->nAccess = 0;
 	this->wordSize = 4;
 }
 
@@ -12,4 +13,8 @@ long Cache::getHit() const {
 
 long Cache::getMiss() const {
 	return this->miss;
+}
+
+long Cache::getNAccess() const {
+	return this->nAccess;
 }

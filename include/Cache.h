@@ -14,6 +14,7 @@ enum ReplacementAlgorithm {
 class Cache {
 protected:
 	long hit, miss;
+	long nAccess;
 	unsigned int wordSize;
 
 public:
@@ -24,6 +25,7 @@ public:
 	virtual void printStatus() = 0;
 	long getHit() const;
 	long getMiss() const;
+	long getNAccess() const;
 };
 
 #endif
