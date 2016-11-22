@@ -40,22 +40,22 @@ make
 
 ### Example
 #### Example 1
-| Specification | Value         |
-|---------------|---------------|
-| Cache type    | Direct Mapped |
-| Cache size    | 4 KB          |
-| Block size    | 4 B           |
+| Specification  | Value         |
+|:---------------|:--------------|
+| **Cache type** | Direct Mapped |
+| **Cache size** | 4 KB          |
+| **Block size** | 4 Bytes       |
 ```bash
 ./bin/Simulator input/gcc_ld_trace.txt --direct-mapped 4 --size 4
 ```
 
 #### Example 2
-| Specification            | Value               |
-|--------------------------|---------------------|
-| Cache type               | Associativity       |
-| Cache size               | 1024 KB             |
-| N-way    		           | 4                   |
-| Replacement Algorithm    | Least Recently Used |
+| Specification             | Value               |
+|:--------------------------|:--------------------|
+| **Cache type**            | Associativity       |
+| **Cache size**            | 1024 KB             |
+| **N-way**    		        | 4                   |
+| **Replacement algorithm** | Least recently used |
 ```bash
 ./bin/Simulator input/gcc_ld_trace.txt --associativity 4 --size 1024 --least-recently-used
 ```
@@ -91,7 +91,7 @@ Command:
   </tr>
   <tr>
     <td rowspan="2"><b>Block Size<br>(Bytes)</b></td>
-    <td colspan="4"><b>Cache Size(KB)</b></td>
+    <td colspan="4"><b>Cache Size (KB)</b></td>
   </tr>
   <tr>
     <td><b>4</b></td>
@@ -136,7 +136,7 @@ Command:
   </tr>
   <tr>
     <td rowspan="2"><b>Block Size<br>(Bytes)</b></td>
-    <td colspan="4"><b>Cache Size(KB)</b></td>
+    <td colspan="4"><b>Cache Size (KB)</b></td>
   </tr>
   <tr>
 	<td><b>4</b></td>
@@ -181,7 +181,7 @@ Command:
   </tr>
   <tr>
     <td rowspan="2"><b>Block Size<br>(Bytes)</b></td>
-    <td colspan="4"><b>Cache Size(KB)</b></td>
+    <td colspan="4"><b>Cache Size (KB)</b></td>
   </tr>
   <tr>
     <td><b>4</b></td>

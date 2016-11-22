@@ -18,8 +18,6 @@ Associativity::Associativity(unsigned int nways, ReplacementAlgorithm replacemen
     this->tagLength = DATA_SIZE - BYTE_OFFSET - log2(entries);
     this->replacementAlgo = replacementAlgo;
     caches = vector<vector<CacheEntries>>(nways,vector<CacheEntries>(entries));
-	printf("%d\n", caches.size());
-	printf("%d\n", caches[0].size());
 
     switch (replacementAlgo)
     {
@@ -116,10 +114,9 @@ void Associativity::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigne
 }
 
 void Associativity::printStatus() {
-	// printf("Entry Size: %lu\n"
-	// 	   "Tag Length: %u\n"
-	// 	   "Index Length: %u\n"
-	// 	   "Block Offset Length: %u\n"
-	// 	   "Byte Offset Length: %u\n",
-	// 	   entrySize, tagLength, indexLength, blockOffsetLength, byteOffsetLength);
+	printf("Entry size: %lu entries\n"
+		   "Tag length: %lu bit(s)\n"
+		   "Index length: %lu bit(s)\n"
+		   "Byte offset length: %lu bit(s)\n",
+		   caches.size(), tagLength, indexLength, byteOffsetLength);
 }

@@ -53,11 +53,11 @@ void DirectMapped::tokenizeAddr(unsigned long addr, unsigned long *tag, unsigned
 }
 
 void DirectMapped::printStatus() {
-	printf("Entry Size: %lu\n"
-		   "Tag Length: %u\n"
-		   "Index Length: %u\n"
-		   "Block Offset Length: %u\n"
-		   "Byte Offset Length: %u\n",
+	printf("Entry size: %lu entries\n"
+		   "Tag length: %u bit(s)\n"
+		   "Index length: %u bit(s)\n"
+		   "Block offset length: %u bit(s)\n"
+		   "Byte offset length: %u bit(s)\n",
 		   entrySize, tagLength, indexLength, blockOffsetLength, byteOffsetLength);
 }
 
