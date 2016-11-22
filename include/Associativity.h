@@ -27,10 +27,10 @@ protected:
 protected:
 		unsigned int nways;
 		unsigned long age;
-		unsigned long byteOffsetBit;
-		unsigned long addressBit;
-		unsigned long tagBit;
-		unsigned long *roundIndex;
+		unsigned long byteOffsetLength;
+		unsigned long indexLength;
+		unsigned long tagLength;
+		unsigned int *roundIndex;
 		ReplacementAlgorithm replacementAlgo;
 		vector<vector<CacheEntries>> caches;
 
